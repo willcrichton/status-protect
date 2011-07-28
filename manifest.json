@@ -1,0 +1,31 @@
+﻿{
+	"name": "Facebook Status Protector",
+	"version": "0.8.2",
+
+	"description": "Prevent your friends (or enemies) from posting annoying statuses on your Facebook page.",
+
+	"content_scripts": [
+		{
+			"matches": ["*://www.facebook.com/*"],
+			"js": ["protect.js"]
+		}
+	],
+	
+	"icons": {
+		"16": "icon16x16.png",
+		"48": "icon48x48.png",
+		"128": "icon128x128.png"
+	},
+	
+	"page_action": {
+		"default_icon": "icon48x48.png",
+		"default_title": "Facebook Status Protect",
+		"default_popup": "popup.html"
+	},
+	
+	"background_page": "background.html",
+	
+	"permissions" : [
+		"tabs"
+	]
+}

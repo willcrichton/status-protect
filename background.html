@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<script>
+			// Called when the url of a tab changes.
+			function checkForValidUrl(tabId, changeInfo, tab) {
+				// If the letter 'g' is found in the tab's URL...
+				if (tab.url.indexOf('facebook.com') > -1) {
+				  // ... show the page action.
+				  chrome.pageAction.show(tabId);
+				}
+			};
+
+			// Listen for any changes to the URL of any tab.
+			chrome.tabs.onUpdated.addListener(checkForValidUrl);
+			
+			chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+				if (request.method == "getStatusProtectPassword")
+				  sendResponse({status: (typeof localStorage['statusProtectPassword'] == 'undefined' ? '' : localStorage['statusProtectPassword'])});
+				else
+				  sendResponse({}); // snub them.
+			});
+		</script>
+	</head>
+</html>
